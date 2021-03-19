@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:flutter_klaviyo/flutter_klaviyo.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   FlutterKlaviyo.setupWithPublicAPIKey(apiKey: 'YOUR_KLAVIYO_PUBLIC_API_KEY');
   runApp(MyApp());
 }

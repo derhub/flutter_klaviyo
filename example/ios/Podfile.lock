@@ -1,6 +1,6 @@
 PODS:
   - Flutter (1.0.0)
-  - flutter_klaviyo (0.0.1):
+  - flutter_klaviyo (0.1.0):
     - Flutter
     - KlaviyoSwift (~> 1.5.0)
   - KlaviyoSwift (1.5.0)
@@ -21,7 +21,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  flutter_klaviyo: 10777d2e4c93a1ca4d3f713e13e76c887ef08880
+  flutter_klaviyo: 5a54f6cf92710f2ec350444afd61d518c78bdcd2
   KlaviyoSwift: 7627dd618a02c58b593f17e7be2018e545a4b33b
 
 PODFILE CHECKSUM: a75497545d4391e2d394c3668e20cfb1c2bbd4aa

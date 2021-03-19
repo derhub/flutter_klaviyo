@@ -8,27 +8,21 @@ public class SwiftFlutterKlaviyoPlugin: NSObject, FlutterPlugin {
     let channel = FlutterMethodChannel(name: "flutter_klaviyo", binaryMessenger: registrar.messenger())
     let instance = SwiftFlutterKlaviyoPlugin()
 
-    registrar.addApplicationDelegate(instance)
     registrar.addMethodCallDelegate(instance, channel: channel)
+    registrar.addApplicationDelegate(instance)
   }
 
   // APPDELIGATE ------------------
 
-  public func application(_: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    if let launch = launchOptions, let data = launch[UIApplicationLaunchOptionsKey.remoteNotification] as? [AnyHashable: Any] {
-      Klaviyo.sharedInstance.handlePush(userInfo: data as NSDictionary)
-    }
-    return true
-  }
-
   public func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-    // Register APN Key
     Klaviyo.sharedInstance.addPushDeviceToken(deviceToken: deviceToken as Data)
   }
 
-  public func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler _: @escaping (UIBackgroundFetchResult) -> Void) {
-    if application.applicationState == UIApplicationState.inactive || application.applicationState == UIApplicationState.background {
-      Klaviyo.sharedInstance.handlePush(userInfo: userInfo as NSDictionary)
+  public func application(_: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    if error._code == 3010 {
+      print("push notifications are not supported in the iOS simulator")
+    } else {
+      print("application:didFailToRegisterForRemoteNotificationsWithError: \(error)")
     }
   }
 
@@ -68,21 +62,21 @@ public class SwiftFlutterKlaviyoPlugin: NSObject, FlutterPlugin {
     result(nil)
   }
 
-  private func handleSetupWithPublicAPIKey(_: FlutterMethodCall, result: @escaping FlutterResult) {
+  private func handleSetupWithPublicAPIKey(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     let args = call.arguments as? [String: Any] ?? [String: Any]()
     let apiKey = args["apiKey"] as! String
     Klaviyo.setupWithPublicAPIKey(apiKey: apiKey)
     result(nil)
   }
 
-  private func handleSetUpUserEmail(_: FlutterMethodCall, result: @escaping FlutterResult) {
+  private func handleSetUpUserEmail(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     let args = call.arguments as? [String: Any] ?? [String: Any]()
     let userEmail = args["userEmail"] as! String
     Klaviyo.sharedInstance.setUpUserEmail(userEmail: userEmail)
     result(nil)
   }
 
-  private func handleTrackEvent(_: FlutterMethodCall, result: @escaping FlutterResult) {
+  private func handleTrackEvent(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     let args = call.arguments as? [String: Any] ?? [String: Any]()
     let eventName = args["eventName"] as! String
     // TODO: add support for customerProperties and properties parameter
