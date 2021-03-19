@@ -4,18 +4,18 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'flutter_klaviyo'
-  s.version          = '0.0.1'
-  s.summary          = 'Klaviyo notification flutter plugin'
+  s.version          = '0.1.0'
+  s.summary          = 'Klaviyo flutter plugin'
   s.description      = <<-DESC
-Klaviyo notification flutter plugin
+Unofficial Klaviyo flutter plugin
                        DESC
-  s.homepage         = ''
+  s.homepage         = 'https://github.com/derhub/flutter_klaviyo'
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'EB' => 'derhubby@gmail.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'KlaviyoSwift',
+  s.dependency 'KlaviyoSwift', '~> 1.5.0'
   s.platform = :ios, '9.0'
 
   # Flutter.framework does not contain a i386 slice.
