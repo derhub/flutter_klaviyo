@@ -5,7 +5,8 @@ import 'package:flutter_klaviyo/flutter_klaviyo.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  FlutterKlaviyo.setupWithPublicAPIKey(apiKey: 'YOUR_KLAVIYO_PUBLIC_API_KEY');
+  FlutterKlaviyo.shared
+      .setupWithPublicAPIKey(apiKey: 'YOUR_KLAVIYO_PUBLIC_API_KEY');
   runApp(MyApp());
 }
 
@@ -18,8 +19,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    FlutterKlaviyo.setUpUserEmail(userEmail: "yes@example.com");
-    FlutterKlaviyo.initNotification();
+    FlutterKlaviyo.shared.setUpUserEmail(userEmail: "yes@example.com");
+    FlutterKlaviyo.shared.initNotification();
   }
 
   Future<void> initPlatformState() async {}
@@ -34,7 +35,8 @@ class _MyAppState extends State<MyApp> {
         body: Center(
           child: TextButton(
             onPressed: () {
-              FlutterKlaviyo.trackEvent(eventName: 'Test Flutter Plugin');
+              FlutterKlaviyo.shared
+                  .trackEvent(eventName: 'Test Flutter Plugin');
             },
             child: Text('send test eventName: Test Flutter Plugin'),
           ),

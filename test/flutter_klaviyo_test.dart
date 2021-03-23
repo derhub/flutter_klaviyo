@@ -18,19 +18,27 @@ void main() {
     methodCall = null;
   });
 
+  test('test shared instace', () {
+    FlutterKlaviyo instance1 = FlutterKlaviyo();
+    FlutterKlaviyo instance2 = FlutterKlaviyo();
+
+    expect(identical(instance1, instance2), true);
+    expect(identical(FlutterKlaviyo.shared, FlutterKlaviyo.shared), true);
+  });
+
   test('setupWithPublicAPIKey', () async {
-    await FlutterKlaviyo.setupWithPublicAPIKey(apiKey: 'test');
+    await FlutterKlaviyo.shared.setupWithPublicAPIKey(apiKey: 'test');
     expect(methodCall,
         isMethodCall('setupWithPublicAPIKey', arguments: {'apiKey': 'test'}));
   });
 
   test('initNotification', () async {
-    await FlutterKlaviyo.initNotification();
+    await FlutterKlaviyo.shared.initNotification();
     expect(methodCall, isMethodCall('initNotification', arguments: null));
   });
 
   test('trackEvent', () async {
-    await FlutterKlaviyo.trackEvent(eventName: 'test');
+    await FlutterKlaviyo.shared.trackEvent(eventName: 'test');
     expect(
       methodCall,
       isMethodCall('trackEvent', arguments: {'eventName': 'test'}),
@@ -38,7 +46,7 @@ void main() {
   });
 
   test('setUpUserEmail', () async {
-    await FlutterKlaviyo.setUpUserEmail(userEmail: 'test');
+    await FlutterKlaviyo.shared.setUpUserEmail(userEmail: 'test');
     expect(
       methodCall,
       isMethodCall('setUpUserEmail', arguments: {'userEmail': 'test'}),
