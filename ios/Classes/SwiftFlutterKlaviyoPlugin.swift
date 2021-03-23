@@ -8,14 +8,17 @@ public class SwiftFlutterKlaviyoPlugin: NSObject, FlutterPlugin {
     let channel = FlutterMethodChannel(name: "flutter_klaviyo", binaryMessenger: registrar.messenger())
     let instance = SwiftFlutterKlaviyoPlugin()
 
-    registrar.addMethodCallDelegate(instance, channel: channel)
     registrar.addApplicationDelegate(instance)
+    registrar.addMethodCallDelegate(instance, channel: channel)
   }
 
   // APPDELIGATE ------------------
-
   public func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
     Klaviyo.sharedInstance.addPushDeviceToken(deviceToken: deviceToken as Data)
+  }
+
+  func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+    Klaviyo.sharedInstance.handlePush(userInfo: userInfo as NSDictionary)
   }
 
   public func application(_: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
