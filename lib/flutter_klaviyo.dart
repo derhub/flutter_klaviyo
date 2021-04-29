@@ -5,13 +5,16 @@ import 'package:flutter/services.dart';
 class FlutterKlaviyo {
   static const MethodChannel _channel = const MethodChannel('flutter_klaviyo');
   static final FlutterKlaviyo _shared = FlutterKlaviyo._internal();
+
   FlutterKlaviyo._internal();
+
   static FlutterKlaviyo get shared => _shared;
+
   factory FlutterKlaviyo() {
     return _shared;
   }
 
-  Future<void> setupWithPublicAPIKey({String apiKey}) {
+  Future<void> setupWithPublicAPIKey({required String apiKey}) {
     final args = <String, dynamic>{
       'apiKey': apiKey,
     };
@@ -23,14 +26,14 @@ class FlutterKlaviyo {
   }
 
   // TODO: add support for customerProperties and properties parameter
-  Future<void> trackEvent({String eventName}) {
+  Future<void> trackEvent({required String eventName}) {
     final args = <String, dynamic>{
       'eventName': eventName,
     };
     return _channel.invokeMethod<void>('trackEvent', args);
   }
 
-  Future<void> setUpUserEmail({String userEmail}) {
+  Future<void> setUpUserEmail({required String userEmail}) {
     final args = <String, dynamic>{
       'userEmail': userEmail,
     };

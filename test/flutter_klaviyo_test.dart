@@ -4,7 +4,7 @@ import 'package:flutter_klaviyo/flutter_klaviyo.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('flutter_klaviyo');
-  MethodCall methodCall;
+  MethodCall? methodCall;
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() {
