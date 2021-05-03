@@ -19,5 +19,8 @@ dev_dependencies:
 flutter:
   plugin:
     platforms:
+      android:
+        package: com.derhub.flutter_klaviyo
+        pluginClass: FlutterKlaviyoPlugin
       ios:
         pluginClass: FlutterKlaviyoPlugin
