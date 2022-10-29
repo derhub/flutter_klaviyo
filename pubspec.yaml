@@ -1,6 +1,6 @@
 name: flutter_klaviyo
 description: Klaviyo flutter plugin
-version: 0.2.1
+version: 0.3.0
 homepage: https://github.com/derhub/flutter_klaviyo
 
 environment:
