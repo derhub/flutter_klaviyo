@@ -1,9 +1,9 @@
 PODS:
   - Flutter (1.0.0)
-  - flutter_klaviyo (0.1.0):
+  - flutter_klaviyo (0.2.0):
     - Flutter
-    - KlaviyoSwift (~> 1.5.0)
-  - KlaviyoSwift (1.5.0)
+    - KlaviyoSwift (~> 1.6)
+  - KlaviyoSwift (1.6.0)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
@@ -20,10 +20,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_klaviyo/ios"
 
 SPEC CHECKSUMS:
-  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
-  flutter_klaviyo: 8a5eab5c7855154a27fb6c40226df6321aedd48e
-  KlaviyoSwift: 7627dd618a02c58b593f17e7be2018e545a4b33b
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  flutter_klaviyo: b55261bc58fa2eb878eb41a81e712a86e180afc6
+  KlaviyoSwift: 245122027b0bfadeec22be1172a32f1b3f372d05
 
-PODFILE CHECKSUM: a75497545d4391e2d394c3668e20cfb1c2bbd4aa
+PODFILE CHECKSUM: cc1f88378b4bfcf93a6ce00d2c587857c6008d3b
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.11.3
