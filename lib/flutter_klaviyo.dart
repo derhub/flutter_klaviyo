@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 
 class FlutterKlaviyo {
-  static const MethodChannel _channel = const MethodChannel('flutter_klaviyo');
+  static const MethodChannel _channel = MethodChannel('flutter_klaviyo');
   static final FlutterKlaviyo _shared = FlutterKlaviyo._internal();
 
   FlutterKlaviyo._internal();
